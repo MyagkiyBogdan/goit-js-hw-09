@@ -45,6 +45,13 @@ function onClickStartTimer() {
   setInterval(() => {
     const currentData = new Date();
     const timerData = selectedData - currentData;
+    if (timerData <= 0) {
+      refs.days.textContent = '00';
+      refs.hours.textContent = '00';
+      refs.minutes.textContent = '00';
+      refs.seconds.textContent = '00';
+      return;
+    }
     const formatedData = convertMs(timerData);
     console.log(formatedData);
     runTimer(formatedData);
